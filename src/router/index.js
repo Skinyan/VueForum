@@ -4,7 +4,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Category from "@/Pages/CategoryPage"
 import ForumShow from "@/Pages/ForumShow";
 import NotFound from "@/Pages/NotFound";
-import sourceData from "@/data.json";
 
 
 const routes = [
@@ -38,7 +37,7 @@ const routes = [
     component: NotFound,
     beforeEnter(to, from, next) {
       //check if thread exists
-      const threadExists = sourceData.threads.find(
+      const threadExists = this.$state.threads.find(
         (thread) => thread.id === to.params.id
       );
       //if exists continue
