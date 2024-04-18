@@ -18,7 +18,7 @@
         </div>
 
         <div class="activity">
-          <p class="replies-count">{{ thread.posts.length }} replies</p>
+          <p class="replies-count">{{ thread.repliesCount }} replies</p>
 
           <img
             class="avatar-medium"
@@ -37,6 +37,9 @@
         </div>
       </div>
     </div>
+    <div v-if="!threads.length" style="padding: 10px; text-align: center">
+      <em>No Threads Available</em>
+    </div>
   </div>
 </template>
 
@@ -51,10 +54,10 @@ export default {
 
   computed: {
     posts() {
-      return this.$store.state.posts;
+      return this.$store.state.posts.items;
     },
     thread() {
-      return this.$store.state.users;
+      return this.$store.state.users.items;
     },
   },
 

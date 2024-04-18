@@ -3,13 +3,13 @@
     <h1>{{ thread.title }}</h1>
     <post-list :posts="threadPosts" />
     <PostEditor @save="addPost" />
+
   </div>
 </template>
 
 <script>
 import PostList from "@/components/PostList";
 import PostEditor from "../components/PostEditor";
-
 export default {
   name: "ThreadShow",
   components: { PostList, PostEditor },
@@ -19,7 +19,6 @@ export default {
       type: String,
     },
   },
-
   data() {
     return {
       threads: this.$store.state.threads,
@@ -34,6 +33,7 @@ export default {
       return this.posts.filter((post) => post.threadId === this.id);
     },
   },
+
   methods: {
     addPost(eventData) {
       const post = {

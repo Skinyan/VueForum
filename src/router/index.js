@@ -1,5 +1,7 @@
 import HomePage from "@/Pages/HomePage";
 import ThreadShow from "@/Pages/ThreadShow";
+import ThreadCreate from "@/Pages/ThreadCreate";
+import ThreadEdit from "@/Pages/ThreadEdit";
 import { createRouter, createWebHistory } from "vue-router";
 import Category from "@/Pages/CategoryPage";
 import ForumShow from "@/Pages/ForumShow";
@@ -25,7 +27,18 @@ const routes = [
     component: ProfilePage,
     props: { edit: true },
   },
-
+  {
+    path: "/forum/:forumId/thread/create",
+    name: "ThreadCreate",
+    component: ThreadCreate,
+    props: true,
+  },
+  {
+    path: "/thread/:id/edit",
+    name: "ThreadEdit",
+    component: ThreadEdit,
+    props: true,
+  },
   {
     path: "/thread/:id",
     name: "ThreadShow",
