@@ -1,16 +1,29 @@
 import HomePage from "@/Pages/HomePage";
 import ThreadShow from "@/Pages/ThreadShow";
 import { createRouter, createWebHistory } from "vue-router";
-import Category from "@/Pages/CategoryPage"
+import Category from "@/Pages/CategoryPage";
 import ForumShow from "@/Pages/ForumShow";
 import NotFound from "@/Pages/NotFound";
-
+import ProfilePage from "@/Pages/ProfilePage";
+import { Store } from "vuex";
 
 const routes = [
   {
     path: "/",
-    name: "HomePage",
+    name: "Home",
     component: HomePage,
+  },
+  {
+    path: "/me",
+    name: "ProfilePage",
+    component: ProfilePage,
+    meta: { toTop: true, smoothScroll: true },
+  },
+  {
+    path: "/me/edit",
+    name: "ProfileEdit",
+    component: ProfilePage,
+    props: { edit: true },
   },
 
   {
@@ -36,11 +49,11 @@ const routes = [
     name: "Not Found",
     component: NotFound,
     beforeEnter(to, from, next) {
-      //check if thread exists
-      const threadExists = this.$state.threads.find(
+      // Check if thread exists
+      const threadExists = Store.state.threads.find(
         (thread) => thread.id === to.params.id
       );
-      //if exists continue
+      // If exists continue
       if (threadExists) {
         return next();
       } else {
@@ -51,7 +64,7 @@ const routes = [
           hash: to.hash,
         });
       }
-      //if doesn't exist, redirect to not found
+      // If doesn't exist, redirect to not found
     },
   },
 ];
@@ -59,4 +72,11 @@ const routes = [
 export default createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to) {
+    const scroll = {};
+    if (to.meta.toTop) scroll.top = 0;
+    if (to.meta.smoothScroll) scroll.behavior = "smooth";
+
+    return scroll;
+  },
 });

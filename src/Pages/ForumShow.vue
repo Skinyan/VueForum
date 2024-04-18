@@ -5,7 +5,7 @@
         <h1>{{ forum.name }}</h1>
         <p class="text-lead">{{ forum.description }}</p>
       </div>
-      <a href="new-thread.html" class="btn-green btn-small">Start a thread</a>
+      <a href="" class="btn-green btn-small">Start a thread</a>
     </div>
     <div v-else>
       <p>Loading forum details...</p>
@@ -17,7 +17,6 @@
     <v-pagination v-model="page" :pages="totalPages" active-color="#57AD8D" />
   </div>
 </template>
-
 
 <script>
 import ThreadList from "../components/ThreadList";

@@ -10,7 +10,6 @@
   </div>
 </template>
 
-
 <script>
 import ForumList from "./ForumList";
 

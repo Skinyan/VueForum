@@ -1,7 +1,6 @@
 <template>
-  <h1 class="col-full text-center">
-    Welcome to the Forum of Hell,<br />
-    as my code is correct but nothing is displayed!!!
+  <h1 class="col-full text-center push-top">
+    Welcome to the Rabbit Hole Forum ^,^
   </h1>
   <CategoryList class="col-full" :categories="categories" />
 </template>
@@ -13,7 +12,7 @@ export default {
   components: {
     CategoryList,
   },
-  
+
   computed: {
     categories() {
       return this.$store.state.categories;
