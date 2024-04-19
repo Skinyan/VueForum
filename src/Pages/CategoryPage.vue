@@ -9,6 +9,7 @@
 
 <script>
 import ForumList from "@/components/ForumList.vue";
+import { findById } from "@/helpers";
 
 export default {
   components: { ForumList },
@@ -20,7 +21,7 @@ export default {
   },
   computed: {
     category() {
-      return this.$store.state.categories.find((category) => category.id === this.id);
+      return findById(this.$store.state.category, this.id);
     },
   },
   methods: {

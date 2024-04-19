@@ -8,6 +8,7 @@ import ForumShow from "@/Pages/ForumShow";
 import NotFound from "@/Pages/NotFound";
 import ProfilePage from "@/Pages/ProfilePage";
 import { Store } from "vuex";
+import { findById } from "@/helpers";
 
 const routes = [
   {
@@ -63,9 +64,7 @@ const routes = [
     component: NotFound,
     beforeEnter(to, from, next) {
       // Check if thread exists
-      const threadExists = Store.state.threads.find(
-        (thread) => thread.id === to.params.id
-      );
+      const threadExists = findById(Store.state.threads, to.params.id);
       // If exists continue
       if (threadExists) {
         return next();
